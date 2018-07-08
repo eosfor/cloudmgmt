@@ -54,3 +54,28 @@ function Get-AzureTableData {
     end {
     }
 }
+
+function Get-AzureCMDBData {
+    [CmdletBinding()]
+    param (
+        [switch]$BU,
+        [switch]$DEPT
+    )
+
+    begin {
+    }
+
+    process {
+        if($BU.IsPresent) {
+            [CMDBCache]::Instance.cache.DB | ? PartitionKey -EQ "BU"
+            return
+        }
+        if($DEPT.IsPresent) {
+            [CMDBCache]::Instance.cache.DB | ? PartitionKey -EQ "DEPT"
+            return
+        }
+        [CMDBCache]::Instance.cache.DB
+    }
+    end {
+    }
+}
