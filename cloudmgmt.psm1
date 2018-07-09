@@ -10,4 +10,6 @@ Get-ChildItem $PSScriptRoot\*.ps1 -Recurse | ? {$_.Directory -notlike "*test*"} 
 }
 
 
+$Global:cmdbFunc = (Get-Command Get-AzureCMDBData)
+
 Export-ModuleMember -Function *-*
