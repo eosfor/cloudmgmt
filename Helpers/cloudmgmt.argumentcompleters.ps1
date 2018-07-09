@@ -41,10 +41,10 @@ function CMDBBUCompleter3 {
 
 
 
-# TabExpansionPlusPlus\Register-ArgumentCompleter -CommandName Get-CMDBdata `
-#     -ParameterName BU `
-#     -ScriptBlock $Function:CMDBBUCompleter `
-#     -Description "BU"
+TabExpansionPlusPlus\Register-ArgumentCompleter -CommandName Get-CMDBdata `
+    -ParameterName BU `
+    -ScriptBlock $Function:CMDBBUCompleter `
+    -Description "BU"
 
 # TabExpansionPlusPlus\Register-ArgumentCompleter -CommandName Get-CMDBdata `
 #     -ParameterName DEPT `
