@@ -1,7 +1,7 @@
 function Get-CMDBdata {
     [CmdletBinding()]
     param (
-        [ArgumentCompleter({CMDBBUCompleter3 @args})]
+        [ArgumentCompleter([CMDBBUCompleter4])]
         $BU,
         [ArgumentCompleter({CMDBDEPTCompleter2 @args})]
         $DEPT
