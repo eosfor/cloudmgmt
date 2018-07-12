@@ -24,7 +24,7 @@ function ConvertTo-Hashtable
 
 $RGname = "trainingRG01"
 $StorageAccountName = "testsstore001"
-$TableName = "CMDB2"
+$TableName = "CMDB"
 
 $storageAcct = Get-AzureRmStorageAccount -ResourceGroupName $RGname -Name $StorageAccountName
 $tbl = Get-AzureStorageTable -Name $TableName -Context $storageAcct.Context
