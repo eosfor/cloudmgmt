@@ -7,8 +7,7 @@
 
 #. $PSScriptRoot\Classes\cache.ps1
 #. $PSScriptRoot\ArgumentCompleters\cloudmgmt.argumentcompleters.ps1
-
-Get-ChildItem $PSScriptRoot\*.ps1 -Recurse | ? {$_.Directory -notlike "*test*"} | ? {$_.Directory -notlike "_ignore*"} | % {
+Get-ChildItem $PSScriptRoot\*.ps1 -Recurse | ? {$_.Directory -notlike "*test*"} | ? {$_.Directory -notlike "*_ignore*"} | % {
     . $_.FullName
 }
 
