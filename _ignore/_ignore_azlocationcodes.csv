@@ -1,0 +1,29 @@
+Region,Location,DisplayName,Country,CountryCode,LocCode,Index
+New South Wales,australiaeast,Australia East,Australia,AUS,EA,0
+Victoria,australiasoutheast,Australia Southeast,Australia,AUS,SE,0
+Sao Paulo State,brazilsouth,Brazil South,Brazil,BRA,SO,0
+Toronto,canadacentral,Canada Central,Canada,CAN,CE,0
+Quebec City,canadaeast,Canada East,Canada,CAN,EA,0
+Paris,francecentral,France Central,France,FRA,CE,0
+Marseille,francesouth,France South,France,FRA,SO,0
+London,uksouth,UK South,United Kingdom of Great Britain and Northern Ireland,GBR,SO,0
+Cardiff,ukwest,UK West,United Kingdom of Great Britain and Northern Ireland,GBR,WE,0
+Hong Kong,eastasia,East Asia,"China, Hong Kong Special Administrative Region",HKG,EA,0
+Pune,centralindia,Central India,India,IND,CE,0
+Chennai,southindia,South India,India,IND,SO,0
+Mumbai,westindia,West India,India,IND,WE,0
+Ireland,northeurope,North Europe,Ireland,IRL,NO,0
+"Tokyo, Saitama",japaneast,Japan East,Japan,JPN,EA,0
+Osaka,japanwest,Japan West,Japan,JPN,WE,0
+Seoul,koreacentral,Korea Central,Republic of Korea,KOR,CE,0
+Busan,koreasouth,Korea South,Republic of Korea,KOR,SO,0
+Netherlands,westeurope,West Europe,Netherlands,NLD,WE,0
+Singapore,southeastasia,Southeast Asia,Singapore,SGP,SE,0
+Iowa,centralus,Central US,United States of America,USA,CE,0
+Virginia,eastus,East US,United States of America,USA,EA,0
+Virginia,eastus2,East US 2,United States of America,USA,EA,1
+Illinois,northcentralus,North Central US,United States of America,USA,NO,0
+Texas,southcentralus,South Central US,United States of America,USA,SO,0
+Wyoming,westcentralus,West Central US,United States of America,USA,WC,0
+California,westus,West US,United States of America,USA,WE,0
+Washington,westus2,West US 2,United States of America,USA,WE,1
