@@ -12,6 +12,6 @@ More details in the set of articles:
 [06. Episode 1: There are some "peculiarities" with argument completers, however](https://eosfor.github.io/2018/Episode1-Issues-with-Argument-Completers/)
 [07. Episode 1: Let's generate some names](https://eosfor.github.io/2018/Episode1-lets-generate-some-names/)
 
-# Some additional details
+## Some additional details
 
 _ignore folder contains few scripts, which can help you to create your own environment, similar to what I use. Basically the script and csv file there basically fill an Azure Table with some test data, so you can try this module against your own Azure.
