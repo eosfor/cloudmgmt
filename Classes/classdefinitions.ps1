@@ -25,10 +25,11 @@ class AZRegionCompleter : IArgumentCompleter
     {
         $resultList = [List[CompletionResult]]::new()
 
-        if (! [CMDBCache]::Instance.cache.AZRegions)  {[CMDBCache]::Instance.cache.AZRegions = Get-AzureRmLocation}
-        $filteredRegions = [CMDBCache]::Instance.cache.AZRegions.Where({$_.DisplayName -like "*$wordToComplete*"})
-        foreach ($rgn in $filteredRegions) {
-            $resultList.Add([CompletionResult]::new($rgn.Location, $rgn.DisplayName, "ParameterValue", 'Azure Region'))
+        $regions = (& $Global:cmdbFunc).Where({$_.PartitionKey -EQ "LOCATIONS"}).
+                                        Where({$_.Name -like "*$wordToComplete*"})
+        foreach ($rgn in $regions) {
+            $code = $rgn.LocCode + $rgn.CountryCode + $rgn.Index
+            $resultList.Add([CompletionResult]::new($code, $rgn.Location, "ParameterValue", 'Azure Region'))
         }
 
         return $resultList
