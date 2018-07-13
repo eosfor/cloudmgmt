@@ -1,40 +1,44 @@
-#naming convention
-# BUCODE-DEPTCODE-AZREGION-RESOURCECODE-SUFFIX
+# naming convention in general
+# BUCODE-DEPTCODE-ENVCODE-AZREGION-RESOURCECODE-SUFFIX
+# VMs name restricted to 15 chars so namig for them is BUCODE-DEPTCODE-ENVCODE-SUFFIX (no dashes)
+# StorageAccount name restricted to 24 chars, should not be any dashes so namig for them is BUCODE-DEPTCODE-ENVCODE-AZREGION-SUFFIX (no dashes)
 function New-AzureResourceName {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true)]
         [ArgumentCompleter([CMDBBUCompleter])]
-        $BUName,
+        [string]$BUName,
 
         [Parameter(Mandatory=$true)]
         [ArgumentCompleter([CMDBDEPTCompleter])]
-        $DEPTName,
+        [string]$DEPTName,
 
         [Parameter(Mandatory=$true)]
         [ArgumentCompleter([AZRegionCompleter])]
-        $AZRegion,
+        [string]$AZRegion,
 
         [Parameter(Mandatory=$true)]
-        [ValidateSet("AVM","VNT")] #sample validations for Azure VMs and VNETs. We want to force only these
-        $ResourceCode,
+        [ValidateSet("DEV","UAT","PDN")] # we want to enfoce these
+        [string]$EnvCode,
 
         [Parameter(Mandatory=$true)]
-        $Suffix
+        [ArgumentCompletions("AVM", "STR")] # there are special cases here. we need to process them separately
+        [string]$ResourceCode,
+
+        [Parameter(Mandatory=$true)]
+        [string]$Suffix
     )
 
 
     end {
-        $name = ($BUName, $DEPTName, $AZRegion, $ResourceCode, $Suffix) -join '-'
-        if ($ResourceCode -eq "AVM") {
-            if ($name.Length -gt 15) { # just a simple check, of course the VM name can be longer, this is just to be on the safe side
-                Write-Error "VM Name length should be less than 15 characters" -ErrorAction Stop
-            }
-        }
-        else {
-            if ($name.Length -gt 24) { #lowest common length (https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions)
-                Write-Error "Resource Name length should be less than 24 characters" -ErrorAction Stop
-            }
+        $name = ""
+        $vmNameErrorMsg = "VM Name length should be less than 15 characters"
+        $strAcctErrorMessage = "Resource Name length should be less than 24 characters"
+
+        switch ($ResourceCode) {
+            "AVM" { $name = ($BUName + $DEPTName + $EnvCode + $Suffix).ToUpper(); if ($name.Length -gt 15) {Write-Error $vmNameErrorMsg -EA Stop } break;}
+            "STR" { $name = ($BUName + $DEPTName + $EnvCode + $AZRegion + $ResourceCode + $Suffix).ToLower(); if ($name.Length -gt 24) {Write-Error $strAcctErrorMessage -EA Stop } break}
+            Default {$name =(($BUName, $DEPTName, $EnvCode, $AZRegion, $ResourceCode, $Suffix) -join '-').ToUpper()}
         }
         $name
     }
