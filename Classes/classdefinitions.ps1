@@ -73,9 +73,6 @@ class CMDBDEPTCompleter : IArgumentCompleter
                                     Where({$_.BU -EQ $buParamValue}).
                                     Where({$_.Name -like "*$wordToComplete*"})
 
-        # $BUs = (& $Global:cmdbFunc) | Where-Object PartitionKey -EQ "DEPT" | Where-Object BU -EQ $buParamValue |
-        #         Select-Object code, name -Unique | Where-Object {$_.name -like "*$wordToComplete*"}
-
         foreach ($b in $BUs) {
             $resultList.Add([CompletionResult]::new($b.code, $b.name, "ParameterValue", 'DEPT'))
         }
