@@ -1,3 +1,5 @@
+#Requires -Version 5
+#Requires -Modules AzureRmStorageTable
 function ConvertTo-Hashtable
 {
     [CmdletBinding()]
